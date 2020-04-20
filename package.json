@@ -6,6 +6,7 @@
   "files": [
     "dist/AgileDownloader.js",
     "dist/AgileDownloader.min.js",
+     "dist/AgileDownloader.min.js.map",
     "src/AgileDownloader.js"
   ],
   "scripts": {
