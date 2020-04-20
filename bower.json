@@ -2,7 +2,7 @@
   "name": "agile-downloader",
   "main": "dist/AgileDownloader.min.js",
   "version": "2.0.0-rc.3",
-  "homepage": "https://github.com/eligrey/AgileDownloader.js",
+  "homepage": "https://github.com/skwerlzu/AgileDownloader",
   "authors": [
     "Eli Grey <me@eligrey.com>"
   ],

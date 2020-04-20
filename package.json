@@ -6,7 +6,7 @@
   "files": [
     "dist/AgileDownloader.js",
     "dist/AgileDownloader.min.js",
-     "dist/AgileDownloader.min.js.map",
+    "dist/AgileDownloader.min.js.map",
     "src/AgileDownloader.js"
   ],
   "scripts": {
@@ -26,7 +26,7 @@
     "blob"
   ],
   "author": "Agile Consulting <info@agileconsulting.info>",
-  "license": "Private",
+  "license": "PRIVATE",
   "bugs": {
     "url": "https://github.com/skwerlzu/AgileDownloader/issues"
   },
