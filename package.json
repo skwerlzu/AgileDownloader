@@ -1,0 +1,39 @@
+{
+  "name": "agile-downloader",
+  "version": "1.0.0",
+  "description": "An HTML5 saveAs() AgileDownloader implementation",
+  "main": "dist/AgileDownloader.min.js",
+  "files": [
+    "dist/AgileDownloader.js",
+    "dist/AgileDownloader.min.js",
+    "src/AgileDownloader.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "build:development": "babel -o dist/AgileDownloader.js --plugins @babel/plugin-transform-modules-umd src/AgileDownloader.js",
+    "build:production": "babel -o dist/AgileDownloader.min.js -s --plugins @babel/plugin-transform-modules-umd --presets minify src/AgileDownloader.js",
+    "build": "npm run build:development && npm run build:production",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skwerlzu/AgileDownloader"
+  },
+  "keywords": [
+    "agiledownloader",
+    "saveas",
+    "blob"
+  ],
+  "author": "Agile Consulting <info@agileconsulting.info>",
+  "license": "Private",
+  "bugs": {
+    "url": "https://github.com/skwerlzu/AgileDownloader/issues"
+  },
+  "homepage": "https://github.com/skwerlzu/AgileDownloader#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-transform-modules-umd": "^7.1.0",
+    "babel-preset-minify": "^0.4.3"
+  }
+}

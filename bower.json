@@ -1,0 +1,21 @@
+{
+  "name": "agile-downloader",
+  "main": "dist/AgileDownloader.min.js",
+  "version": "2.0.0-rc.3",
+  "homepage": "https://github.com/eligrey/AgileDownloader.js",
+  "authors": [
+    "Eli Grey <me@eligrey.com>"
+  ],
+  "description": "An HTML5 saveAs() AgileDownloader implementation",
+  "keywords": [
+    "agiledownloader",
+    "saveas",
+    "blob"
+  ],
+  "license": "MIT",
+  "ignore": [
+      "*",
+      "!dist/*",
+      "!LICENSE.md"
+  ]
+}
