@@ -8,7 +8,9 @@ install: Meteor npm install agile-downloader@https://github.com/skwerlzu/AgileDo
 
 This version defaults to the browser based FileSaver.js methods if Meteor.isCordova returns false.
 
-If cordova is detected it downloads via xHttp and uses the <a href="https://github.com/apache/cordova-plugin-file">cordova-plugin-file</a> plugin to store the file and the <a href="https://github.com/pwlin/cordova-plugin-file-opener2">cordova-plugin-file-opener2</a> plugin to open the downloaded file.
+If cordova is detected it downloads via xHttp and uses the <a href="https://github.com/apache/cordova-plugin-file" target="_blank">cordova-plugin-file</a> plugin to store the file and the <a href="https://github.com/pwlin/cordova-plugin-file-opener2" target="_blank">cordova-plugin-file-opener2</a> plugin to open the downloaded file.
+
+For more info on using cordova in the Agile Consulting Boilerplate see: <a href="https://github.com/informedecommerce/Meteor-MobileConfig" target="_blank">https://github.com/informedecommerce/Meteor-MobileConfig</a>
 
 FileSaver.js
 ============
