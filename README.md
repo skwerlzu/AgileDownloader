@@ -15,7 +15,7 @@ For more info on using cordova in the Agile Consulting Boilerplate see: <a href=
 Current version:
 Cordova usage has a callback handler to report download progress
 
-<code>
+```js
 dlTest(url = null, file_name = null, storage_location = null, callback = null){
          AgileDownloader.saveAs(url, file_name, (response) =>{
             console.warn('Download callback')
@@ -23,10 +23,10 @@ dlTest(url = null, file_name = null, storage_location = null, callback = null){
             this.DL_PROGRESS = response.progress //set reactive var to display or use the progress
          })
         }
-</code>
+```
 
 When a download is complete, the response will return the file attributes in an object
-<code>
+```js
    {
                                               file: fileEntry,
                                               progress: 100,
@@ -35,7 +35,7 @@ When a download is complete, the response will return the file attributes in an 
                                               storage_location: storage_location
                                            }
    response.file will contain downloaded file details.
-   </code>
+```
 
 FileSaver.js
 ============
