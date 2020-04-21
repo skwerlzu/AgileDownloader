@@ -1,11 +1,18 @@
-If you need to save really large files bigger then the blob's size limitation or don't have
-enough RAM, then have a look at the more advanced [StreamSaver.js][7]
-that can save data directly to the hard drive asynchronously with the power of the new streams API. That will have
-support for progress, cancelation and knowing when it's done writing
+AgileDownloader
+============
+
+This plugin is originally based on the fileSaver npm package. More info AgileDownloader.js below.
+This was specifically adapted for including cordova functionality and within a Meteor packaged application based on the Agile Consulting boilerplate.
+
+install: Meteor npm install agile-downloader@https://github.com/skwerlzu/AgileDownloader.git
+
+This version defaults to the browser based FileSaver.js methods if Meteor.isCordova returns false.
+
+If cordova is detected it downloads via xHttp and uses the <a href="https://github.com/apache/cordova-plugin-file">cordova-plugin-file</a> plugin to store the file and the <a href="https://github.com/pwlin/cordova-plugin-file-opener2">cordova-plugin-file-opener2</a> plugin to open the downloaded file.
 
 FileSaver.js
 ============
-
+<a href="https://github.com/eligrey/FileSaver.js">https://github.com/eligrey/FileSaver.js</a>
 FileSaver.js is the solution to saving files on the client-side, and is perfect for
 web apps that generates files on the client, However if the file is coming from the
 server we recommend you to first try to use [Content-Disposition][8] attachment response header as it has more cross-browser compatiblity.
@@ -34,19 +41,19 @@ Feature detection is possible:
 
 ```js
 try {
-    var isFileSaverSupported = !!new Blob;
+    var isAgileDownloaderSupported = !!new Blob;
 } catch (e) {}
 ```
 
 ### IE < 10
 
 It is possible to save text files in IE < 10 without Flash-based polyfills.
-See [ChenWenBrian and koffsyrup's `saveTextAs()`](https://github.com/koffsyrup/FileSaver.js#examples) for more details.
+See [ChenWenBrian and koffsyrup's `saveTextAs()`](https://github.com/koffsyrup/AgileDownloader.js#examples) for more details.
 
 ### Safari 6.1+
 
 Blobs may be opened instead of saved sometimes—you may have to direct your Safari users to manually
-press <kbd>⌘</kbd>+<kbd>S</kbd> to save the file after it is opened. Using the `application/octet-stream` MIME type to force downloads [can cause issues in Safari](https://github.com/eligrey/FileSaver.js/issues/12#issuecomment-47247096).
+press <kbd>⌘</kbd>+<kbd>S</kbd> to save the file after it is opened. Using the `application/octet-stream` MIME type to force downloads [can cause issues in Safari](https://github.com/eligrey/AgileDownloader.js/issues/12#issuecomment-47247096).
 
 ### iOS
 
@@ -54,38 +61,38 @@ saveAs must be run within a user interaction event such as onTouchDown or onClic
 
 Syntax
 ------
-### Import `saveAs()` from file-saver
+### Import `saveAs()` from agile-downloader
 ```js
-import { saveAs } from 'file-saver';
+import { saveAs } from 'agile-downloader';
 ```
 
 ```js
-FileSaver saveAs(Blob/File/Url, optional DOMString filename, optional Object { autoBom })
+AgileDownloader saveAs(Blob/File/Url, optional DOMString filename, optional Object { autoBom })
 ```
 
-Pass `{ autoBom: true }` if you want FileSaver.js to automatically provide Unicode text encoding hints (see: [byte order mark](https://en.wikipedia.org/wiki/Byte_order_mark)). Note that this is only done if your blob type has `charset=utf-8` set.
+Pass `{ autoBom: true }` if you want AgileDownloader.js to automatically provide Unicode text encoding hints (see: [byte order mark](https://en.wikipedia.org/wiki/Byte_order_mark)). Note that this is only done if your blob type has `charset=utf-8` set.
 
 Examples
 --------
 
 ### Saving text using `require()`
 ```js
-var FileSaver = require('file-saver');
+var AgileDownloader = require('agile-downloader');
 var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
-FileSaver.saveAs(blob, "hello world.txt");
+AgileDownloader.saveAs(blob, "hello world.txt");
 ```
 
 ### Saving text
 
 ```js
 var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
-FileSaver.saveAs(blob, "hello world.txt");
+AgileDownloader.saveAs(blob, "hello world.txt");
 ```
 
 ### Saving URLs
 
 ```js
-FileSaver.saveAs("https://httpbin.org/image", "image.jpg");
+AgileDownloader.saveAs("https://httpbin.org/image", "image.jpg");
 ```
 Using URLs within the same origin will just use `a[download]`.
 Otherwise, it will first check if it supports cors header with a synchronous head request.
@@ -117,34 +124,34 @@ If you still want to change the name, then you can change it in the 2nd argument
 // Note: Ie and Edge don't support the new File constructor,
 // so it's better to construct blobs and use saveAs(blob, filename)
 var file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
-FileSaver.saveAs(file);
+AgileDownloader.saveAs(file);
 ```
 
 
 
 ![Tracking image](https://in.getclicky.com/212712ns.gif)
 
-  [1]: http://eligrey.com/demos/FileSaver.js/
+  [1]: http://eligrey.com/demos/AgileDownloader.js/
   [2]: https://github.com/eligrey/canvas-toBlob.js
   [3]: https://bugs.chromium.org/p/chromium/issues/detail?id=375297#c107
   [4]: https://developer.mozilla.org/en-US/docs/DOM/Blob
   [5]: https://github.com/eligrey/Blob.js
   [6]: https://github.com/eligrey/canvas-toBlob.js
   [7]: https://github.com/jimmywarting/StreamSaver.js
-  [8]: https://github.com/eligrey/FileSaver.js/wiki/Saving-a-remote-file#using-http-header
+  [8]: https://github.com/eligrey/AgileDownloader.js/wiki/Saving-a-remote-file#using-http-header
 
 Installation
 ------------------
 
 ```bash
 # Basic Node.JS installation
-npm install file-saver --save
-bower install file-saver
+npm install agile-downloader --save
+bower install agile-downloader
 ```
 
 Additionally, TypeScript definitions can be installed via:
 
 ```bash
 # Additional typescript definitions
-npm install @types/file-saver --save-dev
+npm install @types/agile-downloader --save-dev
 ```
