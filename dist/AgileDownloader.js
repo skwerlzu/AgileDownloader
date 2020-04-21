@@ -1,3 +1,4 @@
+//import { Meteor } from 'meteor/meteor'
 /*
 * AgileDownloader.js
 * A saveAs() AgileDownloader implementation.
@@ -15,6 +16,10 @@ var _global = typeof window === 'object' && window.window === window
   ? self : typeof global === 'object' && global.global === global
   ? global
   : this
+
+
+console.log('AgileDownloader')
+console.log('isCordova: ' + Meteor.isCordova)
 
 function bom (blob, opts) {
   if (typeof opts === 'undefined') opts = { autoBom: false }
@@ -78,7 +83,7 @@ if(Meteor.isCordova){
    
    //If cordova switch to native file transfering and local storage
    //required: cordova file plugin and cordova openfile2 plugin
-   saveAs = function saveAs (url, file_name = null, cb = null){
+   saveAs = function saveAs (url, file_name = null, opts = null, cb = null){
      
       var self = this;
      var storage_location = null
