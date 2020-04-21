@@ -12,6 +12,31 @@ If cordova is detected it downloads via xHttp and uses the <a href="https://gith
 
 For more info on using cordova in the Agile Consulting Boilerplate see: <a href="https://github.com/informedecommerce/Meteor-MobileConfig" target="_blank">https://github.com/informedecommerce/Meteor-MobileConfig</a>
 
+Current version:
+Cordova usage has a callback handler to report download progress
+
+<code>
+dlTest(url = null, file_name = null, storage_location = null, callback = null){
+         AgileDownloader.saveAs(url, file_name, (response) =>{
+            console.warn('Download callback')
+            console.log(response)
+            this.DL_PROGRESS = response.progress //set reactive var to display or use the progress
+         })
+        }
+</code>
+
+When a download is complete, the response will return the file attributes in an object
+<code>
+   {
+                                              file: fileEntry,
+                                              progress: 100,
+                                              file_name: file_name,
+                                              url: url,
+                                              storage_location: storage_location
+                                           }
+   response.file will contain downloaded file details.
+   </code>
+
 FileSaver.js
 ============
 <a href="https://github.com/eligrey/FileSaver.js">https://github.com/eligrey/FileSaver.js</a>
