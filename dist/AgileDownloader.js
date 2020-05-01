@@ -71,11 +71,17 @@ function click (node) {
   }
 }
 
-var saveAs;
+var saveAs = function(){
+    console.log('Agile-Downloader Initiating....')
+    return false
+};
 
 if(Meteor.isCordova){
-   
-   if(!resolveLocalFileSystemURL){
+
+       console.log('Agile-Downloader: Device Ready')
+       console.log(cordova.file);
+      
+    if(!resolveLocalFileSystemURL){
       console.error('Agile Downloader requires the cordova-plugin-file plugin for native download and storage.')
       console.error('<a href="https://github.com/apache/cordova-plugin-file">https://github.com/apache/cordova-plugin-file</a>')
       console.error('meteor add cordova:cordova-plugin-file@6.0.2')
@@ -161,6 +167,7 @@ if(Meteor.isCordova){
                                console.log('mimetype: '+ mimeType)
                                  fileWriter.onwriteend = function () {
                                    var url = fileEntry.toURL();
+
                                     
                                     
                                     if(!cordova.plugins.fileOpener2){
@@ -183,6 +190,7 @@ if(Meteor.isCordova){
                                         },
                                         success: function success() {
                                           //console.log("success with opening the file");
+                                          try{
                                            cb({
                                               file: fileEntry,
                                               progress: 100,
@@ -190,7 +198,11 @@ if(Meteor.isCordova){
                                               url: url,
                                               storage_location: storage_location
                                            })
+                                        }catch(err){
+                                            console.error(err)
                                         }
+                                        }
+                                        
                                       });
                                     }
                                  };
@@ -239,6 +251,8 @@ if(Meteor.isCordova){
                 }, function (err) { console.error('error getting file! ' + err); });
             }, function (err) { console.error('error getting persistent fs! ' + err); });
           } 
+   
+  
    
    
 }else{
@@ -395,3 +409,4 @@ _global.saveAs = saveAs.saveAs = saveAs
 if (typeof module !== 'undefined') {
   module.exports = saveAs;
 }
+
